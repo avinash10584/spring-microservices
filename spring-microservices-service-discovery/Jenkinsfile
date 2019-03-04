@@ -3,12 +3,12 @@ node {
     withMaven(maven:'maven') {
 
         stage('Checkout') {
-            git url: 'https://github.com/avinash10584/spring-boot-examples.git', 
+            git url: 'https://github.com/avinash10584/spring-microservices.git', 
             	credentialsId: 'github-avinash10584', branch: 'master'
         }
 
         stage('Build') {
-        	dir ('spring-microservices-service-discovery-eureka') {
+        	dir ('spring-microservices-service-discovery') {
 	            sh 'mvn clean install'
 	
 	            def pom = readMavenPom file:'pom.xml'
@@ -18,8 +18,8 @@ node {
         }
 
         stage('Image') {
-            dir ('spring-microservices-service-discovery-eureka') {
-                def app = docker.build "spring-boot-examples/discovery-service:${env.version}"
+            dir ('spring-microservices-service-discovery') {
+                def app = docker.build "spring-boot-microservices/discovery-service:${env.version}"
                 //app.push()
             }
         }
