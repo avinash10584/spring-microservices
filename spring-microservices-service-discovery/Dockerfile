@@ -8,8 +8,8 @@ VOLUME /tmp
 # Make port 8080 available to the world outside this container
 EXPOSE 8761
 
-COPY ./target/spring-microservices-service-discovery-0.0.1-SNAPSHOT.jar /usr/service-discovery-0.0.1-SNAPSHOT.jar
-WORKDIR /usr/service-discovery-0.0.1-SNAPSHOT.jar
+COPY ./target/spring-microservices-service-discovery-0.0.1-SNAPSHOT.jar /usr/app/app-service-discovery.jar
+WORKDIR /usr/app/
 
 
 # Run the jar file 
