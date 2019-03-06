@@ -20,11 +20,11 @@ node {
 		stage('Push Image') {
 			dir ('spring-microservices-service-discovery') {
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            	def app = docker.build "spring-boot-microservices/discovery-service:${env.version}"
+            	def app = docker.build "spring-boot-microservices:discovery-service-${env.version}"
                 app.push("${BUILD_NUMBER}")
                 app.push("latest")
             }
-            }
+            
         }        
         
     /*    stage ('Run') {
